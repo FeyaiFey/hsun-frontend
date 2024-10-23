@@ -25,7 +25,7 @@ export default [
     name: 'app/typescript-rules',
     files: ['**/*.ts', '**/*.tsx', '**/*.vue'],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'error', // 将 'error' 替换为 'warn' 可更改为警告模式
+      '@typescript-eslint/no-explicit-any': 'warn', // 将 'error' 替换为 'warn' 可更改为警告模式
     },
   },
 ]

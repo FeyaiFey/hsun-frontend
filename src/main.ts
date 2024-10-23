@@ -2,10 +2,12 @@ import 'virtual:windi.css'
 import 'animate.css'
 
 // 引入全局样式
-// import '@/styles/index.less'
+import '@/styles/index.less'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { setupStore } from '@/store'
+import './permission'
 
 import App from './App.vue'
 import router from './router'
@@ -23,5 +25,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
+app.use(setupStore)
 
 app.mount('#app')
