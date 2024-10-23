@@ -4,6 +4,8 @@ import 'animate.css'
 // 引入全局样式
 import '@/styles/index.less'
 
+// 初始化多语言
+import { setupI18n } from '@/plugins/vueI18n'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { setupStore } from '@/store'
@@ -26,5 +28,6 @@ app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
 app.use(setupStore)
+app.use(setupI18n)
 
 app.mount('#app')
