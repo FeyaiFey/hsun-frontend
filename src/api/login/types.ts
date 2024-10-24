@@ -1,11 +1,16 @@
 export interface UserLoginType {
-  username: string
+  email: string
   password: string
 }
 
 export interface UserType {
-  username: string
+  email: string
   password: string
-  role: string
-  roleId: string
+  username: string
+  role_id: string
+}
+
+export interface ReturnUserInfo {
+  access_token: string
+  token_type: string
 }
