@@ -43,6 +43,7 @@
   import { useRouter } from 'vue-router';
   import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router';
   import { loginApi, getRoleApi } from '@/api/login';
+  import axios from 'axios';
 
 
 
@@ -141,8 +142,8 @@
               login_text.value = "登录中...";
               
               try{
-                  const response = await loginApi({email:loginForm.email,password:loginForm.password})
-                  console.log(response)
+                  const response = await 
+                  console.log(response.code)
                   if(response){
                     // 是否记住我
                     if(unref(loginForm.rememberMe)){
@@ -161,16 +162,16 @@
                     login_text.value = "登录";
                   }
               }catch(error:any){
+                console.log("error")
                   isloading.value = false;
                   login_text.value = "登录";
-                  ElMessage.error(error.response.data.detail)
+                  ElMessage.error("AXIOS响应错误")  // error.response.data.detail
               }
           }
       }catch(errorFields){
           ElMessage.error('表单内容有误，请检查输入！');
           const fields = errorFields as Record<string, any[]>;
 
-          console.log(fields)
           Object.keys(fields).forEach(field => {
               const errorMessage = fields[field][0].message;  // 取每个字段的第一条错误信息
               ElMessage.error(`${errorMessage}`);

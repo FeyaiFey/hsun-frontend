@@ -11,6 +11,7 @@ export interface UserType {
 }
 
 export interface ReturnUserInfo {
+  code:number
   access_token: string
   token_type: string
 }
