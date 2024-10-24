@@ -42,8 +42,8 @@
   import { useUserStore } from '@/store/modules/user';
   import { useRouter } from 'vue-router';
   import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router';
-  import { loginApi, getRoleApi } from '@/api/login';
-  import axios from 'axios';
+import axios from 'axios';
+//   import { loginApi, getRoleApi } from '@/api/login';
 
 
 
@@ -142,8 +142,10 @@
               login_text.value = "登录中...";
               
               try{
-                  const response = await 
-                  console.log(response.code)
+                  const response = await axios.post("http://127.0.0.1:8000/auth/login",
+                  {"email":loginForm.email,
+                    "password":loginForm.password
+                  })
                   if(response){
                     // 是否记住我
                     if(unref(loginForm.rememberMe)){
@@ -162,10 +164,9 @@
                     login_text.value = "登录";
                   }
               }catch(error:any){
-                console.log("error")
                   isloading.value = false;
                   login_text.value = "登录";
-                  ElMessage.error("AXIOS响应错误")  // error.response.data.detail
+                  ElMessage.error(error.response.data.detail)  // 
               }
           }
       }catch(errorFields){

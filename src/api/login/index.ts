@@ -1,16 +1,16 @@
-import axios from '@/axios'
-import type { UserType,ReturnUserInfo,UserLoginType} from './types'
+import request from '@/axios'
+import type { UserType } from './types'
 
 interface RoleParams {
   roleName: string
 }
 
-export const loginApi = (data: UserLoginType): Promise<IResponse<ReturnUserInfo>> => {
-  return request.post({ url: '/auth/login', data })
+export const loginApi = (data: UserType): Promise<IResponse<UserType>> => {
+  return request.post({ url: '/mock/auth/login', data })
 }
 
 export const loginOutApi = (): Promise<IResponse> => {
-  return request.get({ url: '/auth/loginOut' })
+  return request.get({ url: '/mock/auth/loginOut' })
 }
 
 export const getUserListApi = ({ params }: AxiosConfig) => {
@@ -22,13 +22,6 @@ export const getUserListApi = ({ params }: AxiosConfig) => {
     }
   }>({ url: '/mock/user/list', params })
 }
-
-export const getRoleApi = (
-  params: RoleParams
-): Promise<IResponse<AppCustomRouteRecordRaw[]>> => {
-  return request.get({ url: '/auth/role', params })
-}
-
 
 export const getAdminRoleApi = (
   params: RoleParams
